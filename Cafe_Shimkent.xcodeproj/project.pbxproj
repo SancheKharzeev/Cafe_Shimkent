@@ -10,10 +10,18 @@
 		E2B5BEB929EFDFCA00D7200B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEB829EFDFCA00D7200B /* AppDelegate.swift */; };
 		E2B5BEBB29EFDFCA00D7200B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEBA29EFDFCA00D7200B /* SceneDelegate.swift */; };
 		E2B5BEBD29EFDFCA00D7200B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEBC29EFDFCA00D7200B /* ViewController.swift */; };
-		E2B5BEC029EFDFCA00D7200B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B5BEBE29EFDFCA00D7200B /* Main.storyboard */; };
 		E2B5BEC329EFDFCA00D7200B /* Cafe_Shimkent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEC129EFDFCA00D7200B /* Cafe_Shimkent.xcdatamodeld */; };
 		E2B5BEC529EFDFCC00D7200B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2B5BEC429EFDFCC00D7200B /* Assets.xcassets */; };
 		E2B5BEC829EFDFCC00D7200B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B5BEC629EFDFCC00D7200B /* LaunchScreen.storyboard */; };
+		E2B5BED029EFDFFB00D7200B /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BECF29EFDFFB00D7200B /* BannerView.swift */; };
+		E2B5BED229EFE14100D7200B /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BED129EFE14100D7200B /* BannerCell.swift */; };
+		E2B5BED429F0072600D7200B /* UiViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BED329F0072600D7200B /* UiViewExtensions.swift */; };
+		E2B5BED629F0314800D7200B /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BED529F0314800D7200B /* ProductCell.swift */; };
+		E2B5BED829F107AA00D7200B /* ProductInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BED729F107AA00D7200B /* ProductInfo.swift */; };
+		E2B5BEDA29F5351A00D7200B /* BannerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BED929F5351A00D7200B /* BannerInfo.swift */; };
+		E2B5BEDE29F64B1400D7200B /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEDD29F64B1400D7200B /* CategoriesView.swift */; };
+		E2B5BEE029F64E1E00D7200B /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEDF29F64E1E00D7200B /* CategoriesCell.swift */; };
+		E2B5BEE329F6787100D7200B /* CategoriesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEE229F6787100D7200B /* CategoriesInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +29,19 @@
 		E2B5BEB829EFDFCA00D7200B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2B5BEBA29EFDFCA00D7200B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E2B5BEBC29EFDFCA00D7200B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E2B5BEBF29EFDFCA00D7200B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2B5BEC229EFDFCA00D7200B /* Cafe_Shimkent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cafe_Shimkent.xcdatamodel; sourceTree = "<group>"; };
 		E2B5BEC429EFDFCC00D7200B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2B5BEC729EFDFCC00D7200B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2B5BEC929EFDFCC00D7200B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2B5BECF29EFDFFB00D7200B /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		E2B5BED129EFE14100D7200B /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		E2B5BED329F0072600D7200B /* UiViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiViewExtensions.swift; sourceTree = "<group>"; };
+		E2B5BED529F0314800D7200B /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		E2B5BED729F107AA00D7200B /* ProductInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfo.swift; sourceTree = "<group>"; };
+		E2B5BED929F5351A00D7200B /* BannerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerInfo.swift; sourceTree = "<group>"; };
+		E2B5BEDD29F64B1400D7200B /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		E2B5BEDF29F64E1E00D7200B /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
+		E2B5BEE229F6787100D7200B /* CategoriesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +74,48 @@
 		E2B5BEB729EFDFCA00D7200B /* Cafe_Shimkent */ = {
 			isa = PBXGroup;
 			children = (
+				E2B5BEDB29F5395500D7200B /* Banner */,
+				E2B5BEDC29F5397700D7200B /* Products */,
+				E2B5BEE129F66DE300D7200B /* Categories */,
+				E2B5BEBC29EFDFCA00D7200B /* ViewController.swift */,
+				E2B5BED329F0072600D7200B /* UiViewExtensions.swift */,
 				E2B5BEB829EFDFCA00D7200B /* AppDelegate.swift */,
 				E2B5BEBA29EFDFCA00D7200B /* SceneDelegate.swift */,
-				E2B5BEBC29EFDFCA00D7200B /* ViewController.swift */,
-				E2B5BEBE29EFDFCA00D7200B /* Main.storyboard */,
 				E2B5BEC429EFDFCC00D7200B /* Assets.xcassets */,
 				E2B5BEC629EFDFCC00D7200B /* LaunchScreen.storyboard */,
 				E2B5BEC929EFDFCC00D7200B /* Info.plist */,
 				E2B5BEC129EFDFCA00D7200B /* Cafe_Shimkent.xcdatamodeld */,
 			);
 			path = Cafe_Shimkent;
+			sourceTree = "<group>";
+		};
+		E2B5BEDB29F5395500D7200B /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				E2B5BECF29EFDFFB00D7200B /* BannerView.swift */,
+				E2B5BED129EFE14100D7200B /* BannerCell.swift */,
+				E2B5BED929F5351A00D7200B /* BannerInfo.swift */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		E2B5BEDC29F5397700D7200B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2B5BED529F0314800D7200B /* ProductCell.swift */,
+				E2B5BED729F107AA00D7200B /* ProductInfo.swift */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		E2B5BEE129F66DE300D7200B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E2B5BEDD29F64B1400D7200B /* CategoriesView.swift */,
+				E2B5BEDF29F64E1E00D7200B /* CategoriesCell.swift */,
+				E2B5BEE229F6787100D7200B /* CategoriesInfo.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +178,6 @@
 			files = (
 				E2B5BEC829EFDFCC00D7200B /* LaunchScreen.storyboard in Resources */,
 				E2B5BEC529EFDFCC00D7200B /* Assets.xcassets in Resources */,
-				E2B5BEC029EFDFCA00D7200B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +188,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2B5BED029EFDFFB00D7200B /* BannerView.swift in Sources */,
 				E2B5BEBD29EFDFCA00D7200B /* ViewController.swift in Sources */,
 				E2B5BEB929EFDFCA00D7200B /* AppDelegate.swift in Sources */,
+				E2B5BED829F107AA00D7200B /* ProductInfo.swift in Sources */,
 				E2B5BEBB29EFDFCA00D7200B /* SceneDelegate.swift in Sources */,
+				E2B5BEE329F6787100D7200B /* CategoriesInfo.swift in Sources */,
+				E2B5BED429F0072600D7200B /* UiViewExtensions.swift in Sources */,
+				E2B5BED629F0314800D7200B /* ProductCell.swift in Sources */,
 				E2B5BEC329EFDFCA00D7200B /* Cafe_Shimkent.xcdatamodeld in Sources */,
+				E2B5BEDE29F64B1400D7200B /* CategoriesView.swift in Sources */,
+				E2B5BEE029F64E1E00D7200B /* CategoriesCell.swift in Sources */,
+				E2B5BEDA29F5351A00D7200B /* BannerInfo.swift in Sources */,
+				E2B5BED229EFE14100D7200B /* BannerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E2B5BEBE29EFDFCA00D7200B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E2B5BEBF29EFDFCA00D7200B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E2B5BEC629EFDFCC00D7200B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,7 +344,6 @@
 				INFOPLIST_FILE = Cafe_Shimkent/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -324,7 +371,6 @@
 				INFOPLIST_FILE = Cafe_Shimkent/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
