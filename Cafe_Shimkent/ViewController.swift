@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Cafe Shimkent"
+        view.backgroundColor = .white
         setupViews()
         bannerHeaderView.update(bannersString: allBanners)
     }
@@ -43,7 +44,6 @@ class ViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.backgroundColor = .black
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -54,6 +54,36 @@ class ViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    func showMyViewControllerInACustomizedSheet(image: String, title: String, descrip: String, buttTitle: String) {
+        let viewControllerToPresent = ProductPresentVC()
+        if let sheet = viewControllerToPresent.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+            
+            viewControllerToPresent.titlelabel.text = title
+            viewControllerToPresent.productImage.image = UIImage(named: image)
+            viewControllerToPresent.descriptionLabel.text = descrip
+            viewControllerToPresent.button.setTitle("В корзину за \(buttTitle) T", for: .normal)
+        }
+        present(viewControllerToPresent, animated: true, completion: nil)
+    }
+    /*
+    // передача данных в другой VC при selected row
+    private func goToEditNote(image: String, title: String, descrip: String, buttTitle: String) {
+        let rootVC = ProductPresentVC()
+        rootVC.titlelabel.text = title
+        rootVC.productImage.image = UIImage(named: image)
+        rootVC.descriptionLabel.text = descrip
+        rootVC.button.setTitle("В корзину за \(buttTitle) T", for: .normal)
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
+    }
+     */
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -67,12 +97,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()}
         let products = ProductInfo.products[indexPath.row]
         let titleProd = ProductInfo.titleProducts[indexPath.row]
+        let descript = ProductInfo.descriptionProducts[indexPath.row]
         let button = "от \(ProductInfo.price[indexPath.row]) T"
-        cell.configure(image: products, title: titleProd, descrip: ProductInfo.descriptionProducts, buttTitle: button)
-        
-      //  cell.titlelabel.text = "\(indexPath.row)"
-        
-        
+        cell.configure(image: products, title: titleProd, descrip: descript, buttTitle: button)
         return cell
     }
     
@@ -86,10 +113,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return 50
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let title = "Категории товаров"
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let products = ProductInfo.products[indexPath.row]
+        let titleProd = ProductInfo.titleProducts[indexPath.row]
+        let descript = ProductInfo.descriptionProducts[indexPath.row]
+        let button = ProductInfo.price[indexPath.row]
         
-        return title
+        
+        showMyViewControllerInACustomizedSheet(image: products, title: titleProd, descrip: descript, buttTitle: button)
     }
 }
 

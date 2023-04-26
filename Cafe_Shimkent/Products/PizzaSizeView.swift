@@ -1,33 +1,24 @@
 //
-//  BannerView.swift
+//  PizzaSizeView.swift
 //  Cafe_Shimkent
 //
-//  Created by Александр Х on 19.04.2023.
+//  Created by Александр Х on 25.04.2023.
 //
 
 import UIKit
 
-class BannerView: UIView {
+class PizzaSizeView: UIView {
     
-    private var banners = [String]()
+    private var pizzaSize: [String] = [] // переменная где будут размеры пиццы
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: creatCompositionalLayout())
         collectionView.dataSource = self
-        collectionView.register(BannerCell.self, forCellWithReuseIdentifier: BannerCell.reuseID)
+        collectionView.register(PizzaSizeCell.self, forCellWithReuseIdentifier: PizzaSizeCell.reuseID)
         collectionView.backgroundColor = .systemBackground
         return collectionView
     }()
-    /*
-    func setupFlowLayout() -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize  // аторазмер ячейки исходя из размера содержания
-   //     layout.itemSize = .init(width: 110, height: 125)  // размер ячеек
-        layout.scrollDirection = .horizontal // направление движения
-        layout.minimumLineSpacing = 20
-        return layout
-    }
-    */
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -37,8 +28,8 @@ class BannerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(bannersString: [String]) {
-        banners = bannersString
+    func update(sizeString: [String]) {
+        pizzaSize = sizeString
         collectionView.reloadData()
     }
     
@@ -53,16 +44,16 @@ class BannerView: UIView {
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-     
-    private func creatCompositionalLayout() -> UICollectionViewCompositionalLayout { // создаем макет коллекции
-        return UICollectionViewCompositionalLayout(section: createCompositionView())
-    }
     
+private func creatCompositionalLayout() -> UICollectionViewCompositionalLayout { // создаем макет коллекции
+    return UICollectionViewCompositionalLayout(section: createCompositionView())
+}
+
     private func createCompositionView() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1)))
        
        
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: -10)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
       //  let groupHeight = NSCollectionLayoutDimension.fractionalHeight(1)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -73,20 +64,20 @@ class BannerView: UIView {
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         
         return section
-        
     }
-   
 }
 
-extension BannerView: UICollectionViewDataSource {
+extension PizzaSizeView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return banners.count
+        return pizzaSize.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell: BannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCell.reuseID, for: indexPath) as? BannerCell else { return UICollectionViewCell()}
-        let banner = banners[indexPath.item] // в коллекции используем item вместо row
-        cell.configure(string: banner)
+        guard let cell: PizzaSizeCell = collectionView.dequeueReusableCell(withReuseIdentifier: PizzaSizeCell.reuseID, for: indexPath) as? PizzaSizeCell else { return UICollectionViewCell()}
+        cell.titleLabel.text = pizzaSize[indexPath.item]
         return cell
     }
+    
+    
 }
+

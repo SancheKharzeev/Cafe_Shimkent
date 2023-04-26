@@ -1,19 +1,19 @@
 //
-//  CategoriesCell.swift
+//  PizzaSizeCell.swift
 //  Cafe_Shimkent
 //
-//  Created by Александр Х on 24.04.2023.
+//  Created by Александр Х on 25.04.2023.
 //
 
 import UIKit
 
-class CategoriesCell: UICollectionViewCell {
+class PizzaSizeCell: UICollectionViewCell {
     
-    static let reuseID = "CategoriesCell"
+    static let reuseID = "PizzaSizeCell"
     
     public let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Pizza"
+        lbl.text = "Большая"
         lbl.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         lbl.textColor = .black
         lbl.textAlignment = .center

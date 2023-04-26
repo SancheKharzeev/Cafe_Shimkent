@@ -40,7 +40,7 @@ class ProductCell: UITableViewCell {
         btn.layer.cornerRadius = 15
         btn.layer.borderWidth = 2
         btn.layer.borderColor = UIColor.systemGray6.cgColor
-        
+        btn.setImage(UIImage(named: "pizza1"), for: .selected)
         return btn
     }()
     

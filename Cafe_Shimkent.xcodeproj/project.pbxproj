@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2A1A70E29F92E3400166611 /* IngredientsPizzaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1A70D29F92E3400166611 /* IngredientsPizzaCell.swift */; };
+		E2A1A71029F93E0400166611 /* ingredientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1A70F29F93E0400166611 /* ingredientInfo.swift */; };
 		E2B5BEB929EFDFCA00D7200B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEB829EFDFCA00D7200B /* AppDelegate.swift */; };
 		E2B5BEBB29EFDFCA00D7200B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEBA29EFDFCA00D7200B /* SceneDelegate.swift */; };
 		E2B5BEBD29EFDFCA00D7200B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEBC29EFDFCA00D7200B /* ViewController.swift */; };
@@ -22,9 +24,14 @@
 		E2B5BEDE29F64B1400D7200B /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEDD29F64B1400D7200B /* CategoriesView.swift */; };
 		E2B5BEE029F64E1E00D7200B /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEDF29F64E1E00D7200B /* CategoriesCell.swift */; };
 		E2B5BEE329F6787100D7200B /* CategoriesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEE229F6787100D7200B /* CategoriesInfo.swift */; };
+		E2B5BEE529F7E57700D7200B /* ProductPresentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEE429F7E57700D7200B /* ProductPresentVC.swift */; };
+		E2B5BEE729F83B6E00D7200B /* PizzaSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEE629F83B6E00D7200B /* PizzaSizeCell.swift */; };
+		E2B5BEE929F83BE000D7200B /* PizzaSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B5BEE829F83BE000D7200B /* PizzaSizeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E2A1A70D29F92E3400166611 /* IngredientsPizzaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsPizzaCell.swift; sourceTree = "<group>"; };
+		E2A1A70F29F93E0400166611 /* ingredientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ingredientInfo.swift; sourceTree = "<group>"; };
 		E2B5BEB529EFDFCA00D7200B /* Cafe_Shimkent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cafe_Shimkent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B5BEB829EFDFCA00D7200B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2B5BEBA29EFDFCA00D7200B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +49,9 @@
 		E2B5BEDD29F64B1400D7200B /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		E2B5BEDF29F64E1E00D7200B /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
 		E2B5BEE229F6787100D7200B /* CategoriesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesInfo.swift; sourceTree = "<group>"; };
+		E2B5BEE429F7E57700D7200B /* ProductPresentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPresentVC.swift; sourceTree = "<group>"; };
+		E2B5BEE629F83B6E00D7200B /* PizzaSizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaSizeCell.swift; sourceTree = "<group>"; };
+		E2B5BEE829F83BE000D7200B /* PizzaSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaSizeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +113,12 @@
 			isa = PBXGroup;
 			children = (
 				E2B5BED529F0314800D7200B /* ProductCell.swift */,
+				E2B5BEE429F7E57700D7200B /* ProductPresentVC.swift */,
 				E2B5BED729F107AA00D7200B /* ProductInfo.swift */,
+				E2A1A70D29F92E3400166611 /* IngredientsPizzaCell.swift */,
+				E2A1A70F29F93E0400166611 /* ingredientInfo.swift */,
+				E2B5BEE629F83B6E00D7200B /* PizzaSizeCell.swift */,
+				E2B5BEE829F83BE000D7200B /* PizzaSizeView.swift */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -190,15 +205,20 @@
 			files = (
 				E2B5BED029EFDFFB00D7200B /* BannerView.swift in Sources */,
 				E2B5BEBD29EFDFCA00D7200B /* ViewController.swift in Sources */,
+				E2A1A71029F93E0400166611 /* ingredientInfo.swift in Sources */,
+				E2B5BEE929F83BE000D7200B /* PizzaSizeView.swift in Sources */,
+				E2A1A70E29F92E3400166611 /* IngredientsPizzaCell.swift in Sources */,
 				E2B5BEB929EFDFCA00D7200B /* AppDelegate.swift in Sources */,
 				E2B5BED829F107AA00D7200B /* ProductInfo.swift in Sources */,
 				E2B5BEBB29EFDFCA00D7200B /* SceneDelegate.swift in Sources */,
+				E2B5BEE529F7E57700D7200B /* ProductPresentVC.swift in Sources */,
 				E2B5BEE329F6787100D7200B /* CategoriesInfo.swift in Sources */,
 				E2B5BED429F0072600D7200B /* UiViewExtensions.swift in Sources */,
 				E2B5BED629F0314800D7200B /* ProductCell.swift in Sources */,
 				E2B5BEC329EFDFCA00D7200B /* Cafe_Shimkent.xcdatamodeld in Sources */,
 				E2B5BEDE29F64B1400D7200B /* CategoriesView.swift in Sources */,
 				E2B5BEE029F64E1E00D7200B /* CategoriesCell.swift in Sources */,
+				E2B5BEE729F83B6E00D7200B /* PizzaSizeCell.swift in Sources */,
 				E2B5BEDA29F5351A00D7200B /* BannerInfo.swift in Sources */,
 				E2B5BED229EFE14100D7200B /* BannerCell.swift in Sources */,
 			);
