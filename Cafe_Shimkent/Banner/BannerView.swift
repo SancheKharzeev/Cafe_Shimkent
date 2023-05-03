@@ -14,6 +14,7 @@ class BannerView: UIView {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: creatCompositionalLayout())
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(BannerCell.self, forCellWithReuseIdentifier: BannerCell.reuseID)
         collectionView.backgroundColor = .systemBackground
         return collectionView
@@ -31,6 +32,7 @@ class BannerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -69,7 +71,7 @@ class BannerView: UIView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
        
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: -250)
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         
         return section
@@ -78,7 +80,7 @@ class BannerView: UIView {
    
 }
 
-extension BannerView: UICollectionViewDataSource {
+extension BannerView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return banners.count
     }
@@ -88,5 +90,22 @@ extension BannerView: UICollectionViewDataSource {
         let banner = banners[indexPath.item] // в коллекции используем item вместо row
         cell.configure(string: banner)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let bannerString = BannerInfo.allBanners[indexPath.item]
+        print("\(bannerString)")
+        
+        /*
+        // передача данных в другой VC при selected row
+         func goToEditNote(image: String) {
+            let rootVC = BannerVC()
+            rootVC.imageView.image = UIImage(named: image)
+            let navVC = UINavigationController(rootViewController: ViewController())
+            navVC.modalPresentationStyle = .fullScreen
+            navVC.present(rootVC, animated: true)
+        }
+        goToEditNote(image: bannerString)
+        */
     }
 }

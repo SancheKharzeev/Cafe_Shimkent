@@ -10,6 +10,8 @@ import UIKit
 class BannerCell: UICollectionViewCell {
     
     static let reuseID = "BannerCell"
+
+    //MARK: - image
     
     private let imageView: UIImageView = {
         let image = UIImageView()
@@ -22,6 +24,8 @@ class BannerCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        
+       
     }
     
     required init?(coder: NSCoder) {
@@ -37,12 +41,10 @@ class BannerCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10
-        
+       
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-         //   imageView.topAnchor.constraint(equalTo: topAnchor),
-        //    imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.heightAnchor.constraint(equalToConstant: 120),

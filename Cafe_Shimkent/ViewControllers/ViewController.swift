@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
      
     let allBanners = BannerInfo.allBanners
-    
+    private var banners = [String]()
     
     private lazy var tableView: UITableView = {
         let tableview = UITableView()
@@ -23,19 +23,74 @@ class ViewController: UIViewController {
         return tableview
     }()
     
-    lazy var bannerHeaderView: BannerView = { // UICollectionView будет в отдельном UIView
+    lazy var bannerHeaderView: UIView = { // UICollectionView будет в отдельном UIView
         let width = UIView.screenWidth
         let height = width * 0.35 // высота видимого поля в collectionView
-        let bannerView = BannerView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        let bannerView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         return bannerView
     }()
+    
+    //MARK: - collectionView
 
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: creatCompositionalLayout())
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(BannerCell.self, forCellWithReuseIdentifier: BannerCell.reuseID)
+        collectionView.backgroundColor = .systemBackground
+        return collectionView
+    }()
+    
+    private func creatCompositionalLayout() -> UICollectionViewCompositionalLayout { // создаем макет коллекции
+        return UICollectionViewCompositionalLayout(section: createCompositionView())
+    }
+    
+    private func createCompositionView() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1)))
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: -10)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: -250)
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        
+        return section
+    }
+    
+    func update(bannersString: [String]) {
+        banners = bannersString
+        collectionView.reloadData()
+    }
+    
+    private func setupCollectionViews() {
+        bannerHeaderView.addSubview(collectionView)
+      
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: bannerHeaderView.safeAreaLayoutGuide.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: bannerHeaderView.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: bannerHeaderView.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bannerHeaderView.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    //MARK: - TabBar
+    let tabBarsItemSet = {
+        let tabBarItemVC = UITabBarItem()
+        tabBarItemVC.image = UIImage(systemName: "menucard")
+        tabBarItemVC.selectedImage = UIImage(systemName: "menucard.fill")
+        tabBarItemVC.badgeValue = "New"
+        tabBarItemVC.title = "Menu"
+        return tabBarItemVC
+    }()
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Cafe Shimkent"
+        self.tabBarItem = tabBarsItemSet
         view.backgroundColor = .white
         setupViews()
-        bannerHeaderView.update(bannersString: allBanners)
+        setupCollectionViews()
+        update(bannersString: allBanners)
     }
     
     override func viewWillLayoutSubviews() {
@@ -55,7 +110,7 @@ class ViewController: UIViewController {
         ])
     }
     
-    func showMyViewControllerInACustomizedSheet(image: String, title: String, descrip: String, buttTitle: String) {
+    func showProductVCInACustomizedSheet(image: String, title: String, descrip: String, buttTitle: String) {
         let viewControllerToPresent = ProductPresentVC()
         if let sheet = viewControllerToPresent.sheetPresentationController {
             sheet.detents = [.large()]
@@ -71,6 +126,8 @@ class ViewController: UIViewController {
         }
         present(viewControllerToPresent, animated: true, completion: nil)
     }
+    
+   
     /*
     // передача данных в другой VC при selected row
     private func goToEditNote(image: String, title: String, descrip: String, buttTitle: String) {
@@ -89,7 +146,6 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ProductInfo.products.count
-        //products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,8 +175,34 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let descript = ProductInfo.descriptionProducts[indexPath.row]
         let button = ProductInfo.price[indexPath.row]
         
-        
-        showMyViewControllerInACustomizedSheet(image: products, title: titleProd, descrip: descript, buttTitle: button)
+        showProductVCInACustomizedSheet(image: products, title: titleProd, descrip: descript, buttTitle: button)
     }
 }
 
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return banners.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell: BannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCell.reuseID, for: indexPath) as? BannerCell else { return UICollectionViewCell()}
+        let banner = banners[indexPath.item] // в коллекции используем item вместо row
+        cell.configure(string: banner)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let bannerString = BannerInfo.allBanners[indexPath.item]
+        
+        // передача данных в другой VC при selected row
+        func goToEditNote(image: String, title: String) {
+            let rootVC = BannerVC()
+            rootVC.imageView.image = UIImage(named: image)
+            rootVC.titlelabel.text = title
+            let navVC = UINavigationController(rootViewController: ViewController())
+            navVC.modalPresentationStyle = .fullScreen
+            present(rootVC, animated: true)
+        }
+        goToEditNote(image: bannerString, title: bannerString)
+    }
+}

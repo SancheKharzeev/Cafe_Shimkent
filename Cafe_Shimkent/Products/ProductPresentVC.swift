@@ -22,7 +22,6 @@ class ProductPresentVC: UIViewController {
     let productImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "pizza1")
-        image.contentMode = .center
         image.contentMode = .scaleAspectFill
         //        image.frame.size.height = 30
         //        image.frame.size.width = 30
@@ -44,57 +43,84 @@ class ProductPresentVC: UIViewController {
         let btn = UIButton()
         btn.setTitle("от 999 т", for: .normal)
         btn.backgroundColor = .systemOrange
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        btn.setTitleColor(.white, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        btn.setTitleColor(.systemGray, for: .normal)
         //   btn.layer.masksToBounds = true
         btn.layer.cornerRadius = 20
         btn.layer.borderWidth = 2
-        btn.layer.borderColor = UIColor.systemGray6.cgColor
-        btn.setImage(UIImage(named: "pizza1"), for: .selected)
+        btn.layer.borderColor = UIColor.systemGray.cgColor
+        btn.layer.contents = UIImage(named: "dodo coin")?.cgImage
+        btn.layer.contentsGravity = .resizeAspectFill
+        btn.layer.masksToBounds = true
+
         return btn
     }()
     
-    let smallButton: UIButton = {
+    lazy var smallButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("Маленькая", for: .normal)
         btn.backgroundColor = .systemGray6
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         btn.setTitleColor(.black, for: .normal)
+        btn.setTitleColor(.orange, for: .selected)
         //   btn.layer.masksToBounds = true
         btn.layer.cornerRadius = 20
         btn.layer.borderWidth = 2
         btn.layer.borderColor = UIColor.systemGray6.cgColor
-        btn.setImage(UIImage(named: "pizza1"), for: .selected)
+        btn.addTarget(self, action: #selector(smallButtonTapped), for: .touchUpInside)
         return btn
     }()
     
-    let middleButton: UIButton = {
+    lazy var middleButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("Средняя", for: .normal)
         btn.backgroundColor = .systemGray6
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         btn.setTitleColor(.black, for: .normal)
+        btn.setTitleColor(.orange, for: .selected)
         //   btn.layer.masksToBounds = true
         btn.layer.cornerRadius = 20
         btn.layer.borderWidth = 2
         btn.layer.borderColor = UIColor.systemGray6.cgColor
-        btn.setImage(UIImage(named: "pizza1"), for: .selected)
+        btn.addTarget(self, action: #selector(mediumButtonTapped), for: .touchUpInside)
         return btn
     }()
     
-    let bigButton: UIButton = {
+    lazy var bigButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("Большая", for: .normal)
         btn.backgroundColor = .systemGray6
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         btn.setTitleColor(.black, for: .normal)
+        btn.setTitleColor(.orange, for: .selected)
         //   btn.layer.masksToBounds = true
         btn.layer.cornerRadius = 20
         btn.layer.borderWidth = 2
         btn.layer.borderColor = UIColor.systemGray6.cgColor
-        btn.setImage(UIImage(named: "pizza1"), for: .selected)
+        btn.addTarget(self, action: #selector(bigButtonTapped), for: .touchUpInside)
         return btn
     }()
+    @objc func smallButtonTapped(sender: UIButton) {
+        button.setTitle("1500 T", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        smallButton.isSelected = true
+        middleButton.isSelected = false
+        bigButton.isSelected = false
+    }
+    @objc func mediumButtonTapped() {
+        button.setTitle("2000 T", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        smallButton.isSelected = false
+        middleButton.isSelected = true
+        bigButton.isSelected = false
+    }
+    @objc func bigButtonTapped() {
+        button.setTitle("2600 T", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        smallButton.isSelected = false
+        middleButton.isSelected = false
+        bigButton.isSelected = true
+    }
     
     func configure(image: String, title: String, descrip: String, buttTitle: String) {
         productImage.image = UIImage(named: image)
@@ -110,55 +136,13 @@ class ProductPresentVC: UIViewController {
     @objc func dismissSelf() {
         dismiss(animated: true)
     }
-    
-    //MARK: - collectionView
-   /*
-    private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.register(IngredientsPizzaCell.self, forCellWithReuseIdentifier: IngredientsPizzaCell.reuseID)
-        collectionView.backgroundColor = .systemPink
-        return collectionView
-    }()
-    
-    
-    
-    private func creatCompositionalLayout() -> UICollectionViewCompositionalLayout { // создаем макет коллекции
-        return UICollectionViewCompositionalLayout(section: createCompositionView())
-    }
 
-    private func createCompositionView() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1)))
-
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: -10)
-
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0)
-        section.orthogonalScrollingBehavior = .paging
-        return section
-
-    }
-    */
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         navigationSetup()
         view.backgroundColor = .white
-//        collectionView.dataSource = self
-//        collectionView.delegate = self
-        
-        
     }
-    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        collectionView.frame = view.bounds
-//    }
 
     
     func setupUI() {
@@ -169,7 +153,6 @@ class ProductPresentVC: UIViewController {
         view.addSubview(smallButton)
         view.addSubview(middleButton)
         view.addSubview(bigButton)
-//        view.addSubview(collectionView)
         
         titlelabel.translatesAutoresizingMaskIntoConstraints = false
         productImage.translatesAutoresizingMaskIntoConstraints = false
@@ -178,7 +161,6 @@ class ProductPresentVC: UIViewController {
         smallButton.translatesAutoresizingMaskIntoConstraints = false
         middleButton.translatesAutoresizingMaskIntoConstraints = false
         bigButton.translatesAutoresizingMaskIntoConstraints = false
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
               
@@ -214,11 +196,6 @@ class ProductPresentVC: UIViewController {
             bigButton.leadingAnchor.constraint(equalTo: middleButton.trailingAnchor, constant: 10),
             bigButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8),
             bigButton.widthAnchor.constraint(equalToConstant: 110),
- /*
-            collectionView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 2),
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-*/
             
         ])
     }

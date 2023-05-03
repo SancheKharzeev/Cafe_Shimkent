@@ -8,6 +8,6 @@
 import UIKit
 
 struct CategoriesInfo {
-    static let allCategories = ["Пицца", "Напитки", "Закуски", "Комбо", "Кофе", "Коктейли", "Десерты", "Хот-Доги"]
+    static let allCategories = ["Пицца", "Напитки", "Кофе", "Закуски", "Комбо", "Коктейли", "Десерты", "Хот-Доги"]
     
 }

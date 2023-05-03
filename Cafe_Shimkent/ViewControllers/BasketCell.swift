@@ -1,15 +1,15 @@
 //
-//  ProductCell.swift
+//  BasketCell.swift
 //  Cafe_Shimkent
 //
-//  Created by Александр Х on 19.04.2023.
+//  Created by Александр Х on 03.05.2023.
 //
 
 import UIKit
 
-class ProductCell: UITableViewCell {
+class BasketCell: UITableViewCell {
         
-    static let reuseID = "ProductCell"
+    static let reuseID = "BasketCell"
     
     let productImage: UIImageView = {
         let image = UIImageView()
@@ -23,7 +23,7 @@ class ProductCell: UITableViewCell {
         return image
     }()
     
-    
+    // Другая кнопка должна быть типа (+ 1 -)
     lazy var button: UIButton = {
         let btn = UIButton()
         btn.setTitle("от 999 т", for: .normal)
@@ -59,6 +59,14 @@ class ProductCell: UITableViewCell {
         return lbl
     }()
     
+    let pricelabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "3200 T"
+        lbl.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        lbl.textColor = .black
+        return lbl
+    }()
+    
     let descriptionLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "пицца карбонара с сыром и колбасками"
@@ -68,11 +76,12 @@ class ProductCell: UITableViewCell {
         return lbl
     }()
     
-    func configure(image: String, title: String, descrip: String, buttTitle: String) {
+    func configure(image: String, title: String, descrip: String, buttTitle: String, price: String) {
         productImage.image = UIImage(named: image)
         titlelabel.text = title
         descriptionLabel.text = descrip
         button.setTitle(buttTitle, for: .normal)
+        pricelabel.text = price
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -109,7 +118,7 @@ class ProductCell: UITableViewCell {
      //   descriptionLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         //Add button
-        contentView.addSubview(button)
+        contentView.addSubview(button)        
         //Set constraints as per your requirements
         button.translatesAutoresizingMaskIntoConstraints = false
         button.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 8).isActive = true

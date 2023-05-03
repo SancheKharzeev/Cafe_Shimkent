@@ -58,15 +58,12 @@ class CategoriesCell: UICollectionViewCell {
         titleLabel.layer.borderWidth = 2
         titleLabel.layer.borderColor = UIColor.orange.cgColor
         
-        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//            titleLabel.heightAnchor.constraint(equalToConstant: 45),
-//            titleLabel.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
     

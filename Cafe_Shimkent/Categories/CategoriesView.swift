@@ -32,6 +32,11 @@ class CategoriesView: UITableViewHeaderFooterView, UICollectionViewDelegate {
     
     private func setupViews() {
         addSubview(collectionView)
+        
+        layer.shadowOffset = CGSize(width: -5, height: 5)
+        layer.shadowOpacity = 0.4
+        layer.shadowRadius = 8
+        layer.shadowColor = UIColor.gray.cgColor
       
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -65,12 +70,11 @@ private func creatCompositionalLayout() -> UICollectionViewCompositionalLayout {
        
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
-      //  let groupHeight = NSCollectionLayoutDimension.fractionalHeight(1)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
        
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: -110)
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         
         return section
