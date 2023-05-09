@@ -11,6 +11,22 @@ class ProductPresentVC: UIViewController {
     
     private var ingredient = [String]()
     
+    var basketStore = [BasketInfo]()
+    
+    //тут хранятся выбранные параметры пиццы
+    public var defaultPizzaSize = "Большая"
+    public var defaultPizzaPrice = 2600
+    public var defaultImage = ""
+    public var defaultTitle = ""
+    public var selectedProducts = BasketInfo(title: ["Большая"], price: [2600], image: ["promo"])
+    let defaults = UserDefaults.standard
+    var count = 0
+    
+    func makeSelectedProducts() -> BasketInfo {
+        selectedProducts =  BasketInfo(title: [defaultPizzaSize], price: [defaultPizzaPrice], image: [defaultImage])
+        return selectedProducts
+    }
+    
     let titlelabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Pizza1"
@@ -23,8 +39,6 @@ class ProductPresentVC: UIViewController {
         let image = UIImageView()
         image.image = UIImage(named: "pizza1")
         image.contentMode = .scaleAspectFill
-        //        image.frame.size.height = 30
-        //        image.frame.size.width = 30
         image.clipsToBounds = true
         image.layer.cornerRadius = 10
         return image
@@ -39,22 +53,34 @@ class ProductPresentVC: UIViewController {
         return lbl
     }()
     
-    let button: UIButton = {
+    lazy var button: UIButton = {
         let btn = UIButton()
-        btn.setTitle("от 999 т", for: .normal)
+        btn.setTitle("\(defaultPizzaPrice) Т", for: .normal)
         btn.backgroundColor = .systemOrange
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         btn.setTitleColor(.systemGray, for: .normal)
-        //   btn.layer.masksToBounds = true
         btn.layer.cornerRadius = 20
         btn.layer.borderWidth = 2
         btn.layer.borderColor = UIColor.systemGray.cgColor
         btn.layer.contents = UIImage(named: "dodo coin")?.cgImage
         btn.layer.contentsGravity = .resizeAspectFill
         btn.layer.masksToBounds = true
-
+        btn.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
         return btn
     }()
+    
+    
+    @objc func buyButtonTapped() {
+        defaults.set(defaultPizzaPrice, forKey: "\(count)price")
+        defaults.set(defaultPizzaSize, forKey: "\(count)size")
+        defaults.set(defaultImage, forKey: "\(count)image")
+        defaults.set(defaultTitle, forKey: "\(count)title")
+        
+        makeSelectedProducts()
+        count += 1
+        defaults.set(count, forKey: "count")
+        print(count)
+    }
     
     lazy var smallButton: UIButton = {
         let btn = UIButton()
@@ -101,25 +127,33 @@ class ProductPresentVC: UIViewController {
         return btn
     }()
     @objc func smallButtonTapped(sender: UIButton) {
-        button.setTitle("1500 T", for: .normal)
+        defaultPizzaPrice = 1500
+        defaultPizzaSize = "Маленькая"
+        button.setTitle("\(defaultPizzaPrice) T", for: .normal)
         button.setTitleColor(.white, for: .normal)
         smallButton.isSelected = true
         middleButton.isSelected = false
         bigButton.isSelected = false
     }
     @objc func mediumButtonTapped() {
-        button.setTitle("2000 T", for: .normal)
+        defaultPizzaPrice = 2000
+        defaultPizzaSize = "Средняя"
+        button.setTitle("\(defaultPizzaPrice) T", for: .normal)
         button.setTitleColor(.white, for: .normal)
         smallButton.isSelected = false
         middleButton.isSelected = true
         bigButton.isSelected = false
+        
     }
     @objc func bigButtonTapped() {
-        button.setTitle("2600 T", for: .normal)
+        defaultPizzaPrice = 2600
+        defaultPizzaSize = "Большая"
+        button.setTitle("\(defaultPizzaPrice) T", for: .normal)
         button.setTitleColor(.white, for: .normal)
         smallButton.isSelected = false
         middleButton.isSelected = false
         bigButton.isSelected = true
+        
     }
     
     func configure(image: String, title: String, descrip: String, buttTitle: String) {
@@ -136,14 +170,14 @@ class ProductPresentVC: UIViewController {
     @objc func dismissSelf() {
         dismiss(animated: true)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         navigationSetup()
         view.backgroundColor = .white
     }
-
+    
     
     func setupUI() {
         view.addSubview(titlelabel)
@@ -163,7 +197,7 @@ class ProductPresentVC: UIViewController {
         bigButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-              
+            
             productImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             productImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             productImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),

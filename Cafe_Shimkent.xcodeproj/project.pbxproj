@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E27FC7012A041EA9005051ED /* BasketInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27FC7002A041EA9005051ED /* BasketInfo.swift */; };
 		E2A1A70E29F92E3400166611 /* IngredientsPizzaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1A70D29F92E3400166611 /* IngredientsPizzaCell.swift */; };
 		E2A1A71029F93E0400166611 /* ingredientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1A70F29F93E0400166611 /* ingredientInfo.swift */; };
 		E2A1A71229FA3DDB00166611 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1A71129FA3DDB00166611 /* ProfileVC.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E27FC7002A041EA9005051ED /* BasketInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketInfo.swift; sourceTree = "<group>"; };
 		E2A1A70D29F92E3400166611 /* IngredientsPizzaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsPizzaCell.swift; sourceTree = "<group>"; };
 		E2A1A70F29F93E0400166611 /* ingredientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ingredientInfo.swift; sourceTree = "<group>"; };
 		E2A1A71129FA3DDB00166611 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -73,14 +75,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E27FC6FF2A041BB5005051ED /* PProfile */ = {
+			isa = PBXGroup;
+			children = (
+				E2A1A71129FA3DDB00166611 /* ProfileVC.swift */,
+				E2E2217329FFCE9C0011D530 /* ProfileInfo.swift */,
+				E2E2217129FFB87F0011D530 /* ProfileCollectionCell.swift */,
+			);
+			path = PProfile;
+			sourceTree = "<group>";
+		};
 		E2A1A71329FA3DE500166611 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				E2B5BEBC29EFDFCA00D7200B /* ViewController.swift */,
-				E2A1A71129FA3DDB00166611 /* ProfileVC.swift */,
-				E2E2217329FFCE9C0011D530 /* ProfileInfo.swift */,
-				E2E2217129FFB87F0011D530 /* ProfileCollectionCell.swift */,
 				E2A1A71429FA6EAA00166611 /* BasketVC.swift */,
+				E27FC7002A041EA9005051ED /* BasketInfo.swift */,
 				E2E221752A0191730011D530 /* BasketCell.swift */,
 			);
 			path = ViewControllers;
@@ -108,6 +118,7 @@
 				E2B5BEDB29F5395500D7200B /* Banner */,
 				E2B5BEDC29F5397700D7200B /* Products */,
 				E2B5BEE129F66DE300D7200B /* Categories */,
+				E27FC6FF2A041BB5005051ED /* PProfile */,
 				E2A1A71329FA3DE500166611 /* ViewControllers */,
 				E2B5BED329F0072600D7200B /* UiViewExtensions.swift */,
 				E2B5BEB829EFDFCA00D7200B /* AppDelegate.swift */,
@@ -227,6 +238,7 @@
 				E2B5BED029EFDFFB00D7200B /* BannerView.swift in Sources */,
 				E2B5BEBD29EFDFCA00D7200B /* ViewController.swift in Sources */,
 				E2A1A71029F93E0400166611 /* ingredientInfo.swift in Sources */,
+				E27FC7012A041EA9005051ED /* BasketInfo.swift in Sources */,
 				E2A1A70E29F92E3400166611 /* IngredientsPizzaCell.swift in Sources */,
 				E2A1A71529FA6EAA00166611 /* BasketVC.swift in Sources */,
 				E2B5BEB929EFDFCA00D7200B /* AppDelegate.swift in Sources */,

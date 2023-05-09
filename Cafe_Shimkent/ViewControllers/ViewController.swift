@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.tableHeaderView = bannerHeaderView
-        tableview.separatorStyle = .none
+        tableview.separatorStyle = .singleLine
         return tableview
     }()
     
@@ -122,7 +122,8 @@ class ViewController: UIViewController {
             viewControllerToPresent.titlelabel.text = title
             viewControllerToPresent.productImage.image = UIImage(named: image)
             viewControllerToPresent.descriptionLabel.text = descrip
-            viewControllerToPresent.button.setTitle("В корзину за \(buttTitle) T", for: .normal)
+            viewControllerToPresent.defaultImage = image
+            viewControllerToPresent.defaultTitle = title
         }
         present(viewControllerToPresent, animated: true, completion: nil)
     }

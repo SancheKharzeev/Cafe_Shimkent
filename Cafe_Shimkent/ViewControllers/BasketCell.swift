@@ -16,8 +16,8 @@ class BasketCell: UITableViewCell {
         image.image = UIImage(named: "pizza1")
         image.contentMode = .center
         image.contentMode = .scaleAspectFill
-        image.frame.size.height = 130
-        image.frame.size.width = 130
+        image.frame.size.height = 100
+        image.frame.size.width = 100
         image.clipsToBounds = true
         image.layer.cornerRadius = 10
         return image
@@ -76,7 +76,7 @@ class BasketCell: UITableViewCell {
         return lbl
     }()
     
-    func configure(image: String, title: String, descrip: String, buttTitle: String, price: String) {
+    func configure(image: String, title: String, descrip: String?, buttTitle: String?, price: String) {
         productImage.image = UIImage(named: image)
         titlelabel.text = title
         descriptionLabel.text = descrip
