@@ -74,6 +74,7 @@ class ProductPresentVC: UIViewController {
             smallButton.isHidden = true
             middleButton.isHidden = true
             bigButton.isHidden = true
+            ingredientBottomView.isHidden = true
         default:
             print("Oops default \(String(describing: titlelabel.text))")
         }
