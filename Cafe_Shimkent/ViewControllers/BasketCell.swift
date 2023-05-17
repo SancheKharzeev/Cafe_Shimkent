@@ -118,13 +118,13 @@ class BasketCell: UITableViewCell {
      //   descriptionLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         //Add button
-        contentView.addSubview(button)        
+        contentView.addSubview(pricelabel)        
         //Set constraints as per your requirements
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 8).isActive = true
+        pricelabel.translatesAutoresizingMaskIntoConstraints = false
+        pricelabel.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 8).isActive = true
  //       button.topAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: 8).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        pricelabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        pricelabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
 
     }
     

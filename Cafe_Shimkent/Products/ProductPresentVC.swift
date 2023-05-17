@@ -29,7 +29,7 @@ class ProductPresentVC: UIViewController {
     
     let titlelabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Pizza1"
+        lbl.text = "Карбонара"
         lbl.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         lbl.textColor = .black
         return lbl
@@ -38,7 +38,7 @@ class ProductPresentVC: UIViewController {
     let productImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "pizza1")
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.cornerRadius = 10
         return image
@@ -66,6 +66,17 @@ class ProductPresentVC: UIViewController {
         btn.layer.contentsGravity = .resizeAspectFill
         btn.layer.masksToBounds = true
         btn.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
+        
+        switch titlelabel.text {
+        case "Карбонара":
+            print("this is a \(String(describing: titlelabel.text))")
+        case "Напиток 7UP", "Напиток Mirinda":
+            smallButton.isHidden = true
+            middleButton.isHidden = true
+            bigButton.isHidden = true
+        default:
+            print("Oops default \(String(describing: titlelabel.text))")
+        }
         return btn
     }()
     
@@ -80,6 +91,7 @@ class ProductPresentVC: UIViewController {
         count += 1
         defaults.set(count, forKey: "count")
         print(count)
+        dismiss(animated: true)
     }
     
     lazy var smallButton: UIButton = {
@@ -153,7 +165,40 @@ class ProductPresentVC: UIViewController {
         smallButton.isSelected = false
         middleButton.isSelected = false
         bigButton.isSelected = true
+    }
+    
+    lazy var ingredientBottomView: UIView = { // UICollectionView будет в отдельном UIView
+        let width = UIView.screenWidth
+        let height = width * 0.35 // высота видимого поля в collectionView
+        let ingredientView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        return ingredientView
+    }()
+    
+    //MARK: - CollectionView
+    
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: creatCompositionalLayout())
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(IngredientsPizzaCell.self, forCellWithReuseIdentifier: IngredientsPizzaCell.reuseID)
+        collectionView.backgroundColor = .none
+        return collectionView
+    }()
+    
+    private func creatCompositionalLayout() -> UICollectionViewCompositionalLayout { // создаем макет коллекции
+        return UICollectionViewCompositionalLayout(section: createCompositionView())
+    }
+    
+    private func createCompositionView() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.6)))
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: -10)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(1))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0)
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         
+        return section
     }
     
     func configure(image: String, title: String, descrip: String, buttTitle: String) {
@@ -176,8 +221,10 @@ class ProductPresentVC: UIViewController {
         setupUI()
         navigationSetup()
         view.backgroundColor = .white
+        setupCollectionViews()
     }
     
+    //MARK: - SetupUI
     
     func setupUI() {
         view.addSubview(titlelabel)
@@ -187,6 +234,7 @@ class ProductPresentVC: UIViewController {
         view.addSubview(smallButton)
         view.addSubview(middleButton)
         view.addSubview(bigButton)
+        view.addSubview(ingredientBottomView)
         
         titlelabel.translatesAutoresizingMaskIntoConstraints = false
         productImage.translatesAutoresizingMaskIntoConstraints = false
@@ -195,6 +243,7 @@ class ProductPresentVC: UIViewController {
         smallButton.translatesAutoresizingMaskIntoConstraints = false
         middleButton.translatesAutoresizingMaskIntoConstraints = false
         bigButton.translatesAutoresizingMaskIntoConstraints = false
+        ingredientBottomView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             
@@ -202,7 +251,7 @@ class ProductPresentVC: UIViewController {
             productImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             productImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             productImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            productImage.heightAnchor.constraint(equalToConstant: view.frame.width),
+            productImage.heightAnchor.constraint(equalToConstant: 355),
             
             titlelabel.topAnchor.constraint(equalTo: productImage.bottomAnchor),
             titlelabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -231,10 +280,28 @@ class ProductPresentVC: UIViewController {
             bigButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8),
             bigButton.widthAnchor.constraint(equalToConstant: 110),
             
+            ingredientBottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            ingredientBottomView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            ingredientBottomView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            ingredientBottomView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor , constant: 35),
+            
+        ])
+    }
+    
+    private func setupCollectionViews() {
+        ingredientBottomView.addSubview(collectionView)
+      
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: ingredientBottomView.safeAreaLayoutGuide.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: ingredientBottomView.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: ingredientBottomView.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: ingredientBottomView.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
 
+//MARK: - UICollectionViewDelegate
 
 extension ProductPresentVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

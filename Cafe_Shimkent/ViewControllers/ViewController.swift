@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+   
      
     let allBanners = BannerInfo.allBanners
     private var banners = [String]()

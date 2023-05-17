@@ -49,7 +49,7 @@ class BasketVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        tableView.reloadData()
 
         
        
@@ -81,9 +81,11 @@ extension BasketVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()}
         let products = vc.defaults.string(forKey: "\(indexPath.row)image")
         let titleProd = vc.defaults.string(forKey: "\(indexPath.row)title")
-        let price = vc.defaults.string(forKey: "\(indexPath.row)price")
+        let priceString = vc.defaults.string(forKey: "\(indexPath.row)price")
+        let price = "\(priceString ?? "2000") T"
         let buttitle = vc.defaults.string(forKey: "\(indexPath.row)price")
-        cell.configure(image: products!, title: titleProd!, descrip: nil, buttTitle: buttitle!, price: price!)
+        let size = vc.defaults.string(forKey: "\(indexPath.row)size")
+        cell.configure(image: products!, title: titleProd!, descrip: size!, buttTitle: buttitle!, price: price)
        print("\(indexPath.row)image")
         return cell
     }
