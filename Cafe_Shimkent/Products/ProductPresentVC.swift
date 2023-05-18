@@ -231,11 +231,12 @@ class ProductPresentVC: UIViewController {
         view.addSubview(titlelabel)
         view.addSubview(productImage)
         view.addSubview(descriptionLabel)
+        view.addSubview(ingredientBottomView)
         view.addSubview(button)
         view.addSubview(smallButton)
         view.addSubview(middleButton)
         view.addSubview(bigButton)
-        view.addSubview(ingredientBottomView)
+        
         
         titlelabel.translatesAutoresizingMaskIntoConstraints = false
         productImage.translatesAutoresizingMaskIntoConstraints = false

@@ -18,12 +18,20 @@ class BasketVC: UIViewController {
         print(whatGoods)
     }
     
+    let titlelabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Добавлено в корзину"
+        lbl.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
+        lbl.textColor = .black
+        return lbl
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableview = UITableView()
         tableview.register(BasketCell.self, forCellReuseIdentifier: BasketCell.reuseID)
         tableview.delegate = self
         tableview.dataSource = self
-        tableview.backgroundColor = .black
+        tableview.backgroundColor = .none
       //  tableview.tableHeaderView = bannerHeaderView
         tableview.separatorStyle = .singleLine
         return tableview
@@ -40,7 +48,7 @@ class BasketVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
         title = "Корзина"
         self.tabBarItem = tabBarsItemSet
         setupViews()
@@ -50,17 +58,19 @@ class BasketVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-
-        
-       
     }
     
     private func setupViews() {
+        view.addSubview(titlelabel)
         view.addSubview(tableView)
         
+        titlelabel.translatesAutoresizingMaskIntoConstraints = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titlelabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titlelabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),

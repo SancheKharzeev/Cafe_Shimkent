@@ -176,7 +176,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let titleProd = ProductInfo.titleProducts[indexPath.row]
         let descript = ProductInfo.descriptionProducts[indexPath.row]
         let button = ProductInfo.price[indexPath.row]
-        
+        print(indexPath)
         showProductVCInACustomizedSheet(image: products, title: titleProd, descrip: descript, buttTitle: button)
     }
 }
@@ -206,5 +206,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             present(rootVC, animated: true)
         }
         goToEditNote(image: bannerString, title: bannerString)
+    }
+    
+    func scrollTo(indexPath: IndexPath) {
+        tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
 }

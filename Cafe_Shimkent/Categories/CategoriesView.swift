@@ -79,6 +79,10 @@ private func creatCompositionalLayout() -> UICollectionViewCompositionalLayout {
         
         return section
     }
+    
+    private func scrollTo() {
+        
+    }
 }
 
 extension CategoriesView: UICollectionViewDataSource {
@@ -92,5 +96,11 @@ extension CategoriesView: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let categoryString = CategoriesInfo.allCategories[indexPath.item]
+        let vc = ViewController()
+        let indexpath = IndexPath(row: 0, section: 7)
+        vc.scrollTo(indexPath: indexpath)
+    }
     
 }

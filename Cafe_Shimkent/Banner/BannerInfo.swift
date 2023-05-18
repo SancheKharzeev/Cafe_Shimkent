@@ -9,5 +9,6 @@ import UIKit
 
 struct BannerInfo {
     static let allBanners = ["banner1", "banner2","banner3", "banner4","banner5", "banner6", "banner7"]
-    
 }
+
+
