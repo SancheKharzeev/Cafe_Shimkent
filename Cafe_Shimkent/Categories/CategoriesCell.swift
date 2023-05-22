@@ -6,6 +6,7 @@
 //
 
 import UIKit
+// MARK: Ячейки перечня категорий товаров, горизонтальный список на первом ViewController
 
 class CategoriesCell: UICollectionViewCell {
     

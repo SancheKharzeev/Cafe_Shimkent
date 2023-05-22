@@ -6,6 +6,7 @@
 //
 
 import UIKit
+// MARK: Перечень товаров на первом ViewController
 
 class ProductPresentVC: UIViewController {
     
@@ -70,7 +71,7 @@ class ProductPresentVC: UIViewController {
         switch titlelabel.text {
         case "Карбонара":
             print("this is a \(String(describing: titlelabel.text))")
-        case "Напиток 7UP", "Напиток Mirinda":
+        case "Напиток 7UP", "Напиток Mirinda", "Кофе Американо", "Кофе Капучино", "Кофе Мокка":
             smallButton.isHidden = true
             middleButton.isHidden = true
             bigButton.isHidden = true
@@ -94,6 +95,8 @@ class ProductPresentVC: UIViewController {
         print(count)
         dismiss(animated: true)
     }
+    
+    //MARK: Buttons smal middle big
     
     lazy var smallButton: UIButton = {
         let btn = UIButton()
@@ -186,6 +189,20 @@ class ProductPresentVC: UIViewController {
         return collectionView
     }()
     
+    
+       private func creatCompositionalLayout() -> UICollectionViewFlowLayout {
+           let layout = UICollectionViewFlowLayout()
+   //        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize  // авторазмер ячейки исходя из размера содержания
+           layout.itemSize = .init(width: 110, height: 150)  // размер ячеек
+           layout.scrollDirection = .vertical // направление движения
+           layout.minimumLineSpacing = 1
+           layout.minimumInteritemSpacing = 1
+           layout.sectionInset = .init(top: 1, left: 5, bottom: 2, right: 5)
+           return layout
+       }
+   
+/*
+    
     private func creatCompositionalLayout() -> UICollectionViewCompositionalLayout { // создаем макет коллекции
         return UICollectionViewCompositionalLayout(section: createCompositionView())
     }
@@ -201,6 +218,7 @@ class ProductPresentVC: UIViewController {
         
         return section
     }
+    */
     
     func configure(image: String, title: String, descrip: String, buttTitle: String) {
         productImage.image = UIImage(named: image)
@@ -282,9 +300,9 @@ class ProductPresentVC: UIViewController {
             bigButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8),
             bigButton.widthAnchor.constraint(equalToConstant: 110),
             
-            ingredientBottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            ingredientBottomView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            ingredientBottomView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            ingredientBottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -66),
+            ingredientBottomView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            ingredientBottomView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             ingredientBottomView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor , constant: 35),
             
         ])
@@ -319,10 +337,5 @@ extension ProductPresentVC: UICollectionViewDelegate, UICollectionViewDataSource
         
         
         return cell
-    }
-    
-    
-    
-    
-    
+    }    
 }

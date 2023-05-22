@@ -6,6 +6,7 @@
 //
 
 import UIKit
+// MARK: Ячейки товаров на первом ViewController
 
 class ProductCell: UITableViewCell {
         

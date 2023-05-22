@@ -6,6 +6,7 @@
 //
 
 import UIKit
+// MARK: Ячейки ингредиентов когда выбираешь пиццу с первого ViewController
 
 class IngredientsPizzaCell: UICollectionViewCell {
     
@@ -40,6 +41,24 @@ class IngredientsPizzaCell: UICollectionViewCell {
         return lbl
     }()
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                layer.frame.size.height = 154
+                layer.cornerRadius = 20
+                layer.borderWidth = 2
+                layer.borderColor = UIColor.black.cgColor
+                layer.backgroundColor = UIColor.orange.cgColor
+                titlelabel.textColor = .white
+                
+            } else {
+                layer.borderColor = UIColor.white.cgColor
+                layer.backgroundColor = .none
+                titlelabel.textColor = .black
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
    
@@ -52,21 +71,23 @@ class IngredientsPizzaCell: UICollectionViewCell {
         Image.topAnchor.constraint(equalTo: topAnchor, constant: 3).isActive = true
         Image.widthAnchor.constraint(equalToConstant: Image.frame.size.width).isActive = true
         Image.heightAnchor.constraint(equalToConstant: Image.frame.size.height).isActive = true
+        Image.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         //Add label
         contentView.addSubview(descriptionLabel)
         //Set constraints as per your requirements
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.topAnchor.constraint(equalTo: Image.bottomAnchor, constant: 8).isActive = true
+        descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
        
         
         //Add label
         contentView.addSubview(titlelabel)
         //Set constraints as per your requirements
         titlelabel.translatesAutoresizingMaskIntoConstraints = false
-        titlelabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8).isActive = true
-        
+        titlelabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 4).isActive = true
         titlelabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        titlelabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
      
         

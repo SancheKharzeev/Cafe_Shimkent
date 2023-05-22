@@ -32,7 +32,6 @@ class BasketVC: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.backgroundColor = .none
-      //  tableview.tableHeaderView = bannerHeaderView
         tableview.separatorStyle = .singleLine
         return tableview
     }()

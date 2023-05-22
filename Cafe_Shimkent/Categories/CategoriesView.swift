@@ -6,6 +6,7 @@
 //
 
 import UIKit
+// MARK: Перечень категорий товаров, горизонтальный список на первом ViewController
 
 class CategoriesView: UITableViewHeaderFooterView, UICollectionViewDelegate {
     
@@ -79,10 +80,6 @@ private func creatCompositionalLayout() -> UICollectionViewCompositionalLayout {
         
         return section
     }
-    
-    private func scrollTo() {
-        
-    }
 }
 
 extension CategoriesView: UICollectionViewDataSource {
@@ -99,8 +96,24 @@ extension CategoriesView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let categoryString = CategoriesInfo.allCategories[indexPath.item]
         let vc = ViewController()
-        let indexpath = IndexPath(row: 0, section: 7)
-        vc.scrollTo(indexPath: indexpath)
+        vc.categoryProducts = categoryString
+        print(categoryString)
+        vc.tableViewSetup()
+    
+//        switch categoryString {
+//        case "Напитки":
+//            vc.tableDataImage = ProductInfo.drinks
+//            vc.tableDataTitle = ProductInfo.titleDrinks
+//            vc.tableDataDescription = ProductInfo.descriptionDrinks
+//            vc.tableDataPrice = ProductInfo.priceDrinks
+//            vc.tableView.reloadData()
+//        default:
+//            vc.tableDataImage = ProductInfo.products
+//            vc.tableDataTitle = ProductInfo.titleProducts
+//            vc.tableDataDescription = ProductInfo.descriptionProducts
+//            vc.tableDataPrice = ProductInfo.price
+//            vc.tableView.reloadData()
+//        }
     }
     
 }
