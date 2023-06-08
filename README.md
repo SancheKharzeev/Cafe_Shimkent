@@ -2,8 +2,8 @@
 Дизайн приложения для заказа еды. 
 Используется в кафе, пиццерии, любой компании где есть продукция на заказ.
 
-<img width="327" alt="Снимок экрана 2023-05-04 в 15 47 18" src="https://user-images.githubusercontent.com/123185932/236170655-87abae22-0b2a-472b-a69c-0df0eb507b5e.png">
+![](https://github.com/SancheKharzeev/Cafe_Shimkent/blob/main/ezgif.com-resize1.gif)
 
-<img width="330" alt="Снимок экрана 2023-04-27 в 00 08 43" src="https://user-images.githubusercontent.com/123185932/234665213-3dbce739-8865-4ea6-840b-6745471a338a.png">
+![](https://github.com/SancheKharzeev/Cafe_Shimkent/blob/main/ezgif.com-video-to-gif2.gif)
 
-<img width="321" alt="Снимок экрана 2023-05-04 в 15 49 50" src="https://user-images.githubusercontent.com/123185932/236171135-1f894097-72f8-4ed0-b1fa-9a663571c0d4.png">
+![](https://github.com/SancheKharzeev/Cafe_Shimkent/blob/main/ezgif.com-video-to-gif3.gif)
